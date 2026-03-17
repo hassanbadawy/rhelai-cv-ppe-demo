@@ -1,1 +1,9 @@
+numpy
+scikit-learn
 fiftyone
+sam2
+torch
+torchvision
+torchaudio
+ultralytics
+
