@@ -1,0 +1,17 @@
+# VLM-annotated PPE dataset (4-class)
+#
+# Produced by notebook 03-curate-and-export.ipynb after Qwen2.5-VL
+# labels the 40 training images in notebook 02.
+#
+# Consumed by notebook 04-train-yolo.ipynb via:
+#   yolo train data=data-vlm.yaml model=yolov8n.pt
+
+path: vlm-annotated       # dataset root dir (under ./datasets/)
+train: images/train       # the 40 VLM-annotated images
+val: images/train         # reused: workshop demo uses the same 40 for val
+
+names:
+  0: person
+  1: helmet
+  2: vest
+  3: gloves

@@ -1,6 +1,11 @@
 # Datasets
-datasets/
-
+# ignore raw source downloads and derived exports; commit only the curated 50-image workshop set
+datasets/_source/
+datasets/vlm-annotated/
+.claude/
+CLAUDE.md
+.kilo/
+.ruff_cache/
 # Model weights
 *.pt
 *.pth
@@ -12,6 +17,7 @@ datasets/
 runs/
 wandb/
 mlruns/
+output/
 
 # Python
 __pycache__/
