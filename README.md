@@ -4,7 +4,7 @@ End-to-end workshop demo for **Red Hat Enterprise Linux AI (RHELAI)** / **Red Ha
 
 ## The story
 
-A customer hands us a folder of construction-site photos. They want a detector for **people, helmets, vests, and gloves**. They have no labels. We:
+A customer hands us a folder of construction-site photos. They want a detector for **PPE compliance** — flagging workers who are wearing (or NOT wearing) a helmet, vest, or gloves. They have no labels. We:
 
 1. **Load** the raw images into FiftyOne so we can browse them.
 2. **Annotate** all of them zero-shot with **Qwen2.5-VL**, a Vision-Language Model.
@@ -30,7 +30,7 @@ Run them in order. Each notebook's final markdown cell links to the next.
 
 ## Taxonomy
 
-Four classes: `person`, `helmet`, `vest`, `gloves`. Pinned in [`data-vlm.yaml`](data-vlm.yaml) and referenced identically by the VLM prompt, the YOLO trainer, and the endpoint consumer.
+Seven classes: `person`, `helmet`, `no-helmet`, `vest`, `no-vest`, `gloves`, `no-gloves`. Positives mean the worker *is* wearing the PPE; negatives are boxed around the uncovered body part. Pinned in [`data-vlm.yaml`](data-vlm.yaml) and referenced identically by the VLM prompt, the YOLO trainer, and the endpoint consumer.
 
 ## Dataset
 
@@ -60,7 +60,7 @@ No labels come with the images — the whole point of the workshop is that the V
 ├── 04-train-yolo.ipynb
 ├── 05-register-and-deploy.ipynb
 ├── 06-consume-deployed-endpoint.ipynb
-├── data-vlm.yaml                        # 4-class taxonomy, source of truth
+├── data-vlm.yaml                        # 7-class PPE-compliance taxonomy, source of truth
 ├── datasets/ppe/images/                 # 50 committed JPEGs (40 train + 10 test + empty val)
 ├── scripts/curate_workshop_samples.py   # reproduces the curated set from full Construction-PPE
 ├── pipelines/                           # Elyra/Kubeflow pipeline assets (optional)
