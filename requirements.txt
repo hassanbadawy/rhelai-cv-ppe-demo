@@ -8,7 +8,6 @@ ultralytics
 pillow
 matplotlib
 requests
-gradio
 boto3==1.35.55
 botocore==1.35.55
 model-registry

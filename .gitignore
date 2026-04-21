@@ -28,7 +28,7 @@ dist/
 build/
 *.egg
 .eggs/
-
+*.pt
 # Virtual environments
 .venv/
 venv/

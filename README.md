@@ -64,6 +64,7 @@ No labels come with the images — the whole point of the workshop is that the V
 ├── datasets/ppe/images/                 # 50 committed JPEGs (40 train + 10 test + empty val)
 ├── scripts/curate_workshop_samples.py   # reproduces the curated set from full Construction-PPE
 ├── pipelines/                           # Elyra/Kubeflow pipeline assets (optional)
+├── extras/                              # Alternative training lanes (PyTorchJob, etc.)
 ├── samples/                             # standalone smoke-test images
 ├── output/                              # generated annotated images
 └── expr/                                # archival / experimental notebooks (SAM2, RT-DETR, etc.)

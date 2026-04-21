@@ -59,9 +59,12 @@
                 {"env_var": "DATASET_PREFIX", "value": "workshop-dataset"},
                 {"env_var": "MODEL_PREFIX",   "value": "models/ppe-yolov8n-vlm"},
                 {"env_var": "MODEL_VERSION",  "value": "v1"},
-                {"env_var": "EPOCHS",         "value": "20"},
+                {"env_var": "EPOCHS",         "value": "100"},
                 {"env_var": "IMG_SIZE",       "value": "640"},
-                {"env_var": "BATCH",          "value": "16"}
+                {"env_var": "BATCH",          "value": "16"},
+                {"env_var": "LR0",            "value": "0.001"},
+                {"env_var": "FREEZE",         "value": "10"},
+                {"env_var": "PATIENCE",       "value": "20"}
               ],
               "kubernetes_secrets": [
                 {"env_var": "AWS_ACCESS_KEY_ID",     "name": "aws-connection-storage", "key": "AWS_ACCESS_KEY_ID"},
@@ -104,6 +107,10 @@
                 {"env_var": "SERVICE_ACCOUNT",      "value": "aws-connection-storage"}
               ],
               "kubernetes_secrets": [
+                {"env_var": "AWS_ACCESS_KEY_ID",     "name": "aws-connection-storage", "key": "AWS_ACCESS_KEY_ID"},
+                {"env_var": "AWS_SECRET_ACCESS_KEY", "name": "aws-connection-storage", "key": "AWS_SECRET_ACCESS_KEY"},
+                {"env_var": "AWS_S3_ENDPOINT",       "name": "aws-connection-storage", "key": "AWS_S3_ENDPOINT"},
+                {"env_var": "AWS_DEFAULT_REGION",    "name": "aws-connection-storage", "key": "AWS_DEFAULT_REGION"},
                 {"env_var": "AWS_S3_BUCKET",         "name": "aws-connection-storage", "key": "AWS_S3_BUCKET"},
                 {"env_var": "MODEL_REGISTRY_URL",   "name": "model-registry-access",  "key": "url"},
                 {"env_var": "MODEL_REGISTRY_PORT",  "name": "model-registry-access",  "key": "port",  "optional": true},

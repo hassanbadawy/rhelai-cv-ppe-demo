@@ -19,9 +19,14 @@ import subprocess
 import sys
 from pathlib import Path
 
+from PIL import Image
+
 SEED = 51
 NUM_TRAIN = 40
 NUM_TEST = 10
+# Downsize committed images to this long-side so the whole dataset stays under the
+# cluster vLLM's `max_model_len` when Qwen2.5-VL encodes them as visual tokens.
+MAX_DIM = 896
 DATASET_URL = "https://github.com/ultralytics/assets/releases/download/v0.0.0/construction-ppe.zip"
 SOURCE_ROOT = Path("datasets/_source/construction-ppe")
 SOURCE_DIR = SOURCE_ROOT / "images" / "train"
@@ -60,8 +65,14 @@ def main() -> int:
         out_dir.mkdir(parents=True)
         for i, src in enumerate(files, start=1):
             dst = out_dir / f"{split_name}_{i:02d}.jpg"
-            shutil.copy2(src, dst)
-        print(f"Wrote {len(files)} images -> {out_dir}")
+            with Image.open(src) as im:
+                im = im.convert("RGB")
+                w, h = im.size
+                if max(w, h) > MAX_DIM:
+                    scale = MAX_DIM / max(w, h)
+                    im = im.resize((int(w * scale), int(h * scale)), Image.Resampling.LANCZOS)
+                im.save(dst, format="JPEG", quality=90)
+        print(f"Wrote {len(files)} images -> {out_dir} (max {MAX_DIM} px long-side)")
 
     # Keep an empty val split around so Ultralytics YAML stays valid.
     val_dir = TARGET_ROOT / "val"
