@@ -5,6 +5,9 @@ torch
 torchvision
 torchaudio
 ultralytics
+onnx
+onnxslim
+onnxruntime
 pillow
 matplotlib
 requests
