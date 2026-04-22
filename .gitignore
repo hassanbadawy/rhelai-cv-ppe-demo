@@ -18,6 +18,8 @@ runs/
 wandb/
 mlruns/
 output/
+# Local S3 staging directory (notebook 05)
+models/
 
 # Python
 __pycache__/
